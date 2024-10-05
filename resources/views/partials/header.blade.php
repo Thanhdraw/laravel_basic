@@ -31,15 +31,15 @@
                     <div x-show="open" @click.away="open = false"
                         class="absolute right-0 z-10 w-48 mt-2 overflow-hidden bg-white rounded-md shadow-xl">
                         <!-- Placeholder: Replace with actual authentication logic -->
-                        @if (true) <!-- Replace with actual auth check -->
+                        @if (!true) <!-- Replace with actual auth check -->
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Thông tin cá
                                 nhân</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đơn hàng của
                                 tôi</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng xuất</a>
                         @else
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng nhập</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng ký</a>
+                            <a href="/login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng nhập</a>
+                            <a href="/register" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng ký</a>
                         @endif
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/shop">Sản phẩm</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/category">Danh mục</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/contact">Liên hệ</a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Về chúng tôi</a>
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="/aboutus">Về chúng tôi</a>
             </div>
         </nav>
         <div class="relative max-w-lg mx-auto mt-6">
