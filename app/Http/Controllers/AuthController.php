@@ -9,6 +9,12 @@ class AuthController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function index()
+    {
+        return view('auth.register');
+    }
+
     public function Login()
     {
         //
@@ -28,7 +34,16 @@ class AuthController extends Controller
     {
         //
     }
-
+    public function submit(Request $request)
+    {
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required',
+            'confirm password' => 'required'
+        ]);
+        return redirect()->route('register')->with('success', 'Đăng kí tài khoản thành công');
+    }
     /**
      * Store a newly created resource in storage.
      */

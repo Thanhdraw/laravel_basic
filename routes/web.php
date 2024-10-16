@@ -18,6 +18,8 @@ Route::get('/shop/{id}', [ProductController::class, 'show']);
 Route::get('/category', [CateController::class, 'index']);
 
 Route::get('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'register']);
+Route::get('/register', [AuthController::class, 'submit'])->name(name: 'auth.submit');
+Route::get('/register', [AuthController::class, 'index'])->name(name: 'register.index');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+

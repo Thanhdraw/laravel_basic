@@ -13,7 +13,6 @@ class ContactController extends Controller
         return view('contact.contact', compact('title'));
     }
 
-
     public function submit(Request $request)
     {
         $validateData = $request->validate([

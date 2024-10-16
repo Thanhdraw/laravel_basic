@@ -2,7 +2,11 @@
 
 @section('content')
 <!-- resources/views/auth/register.blade.php -->
-
+@if(session('success'))
+    <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
 
 <div class="flex items-center justify-center min-h-screen px-4 py-12 bg-gray sm:px-6 lg:px-8">
     <div class="w-full max-w-md space-y-8">
@@ -11,7 +15,7 @@
                 Đăng ký tài khoản mới
             </h2>
         </div>
-        <form class="mt-8 space-y-6" action="#" method="POST">
+        <form class="mt-8 space-y-6" action="{{route('auth.submit')}}" method="POST">
             @csrf
             <div class="p-8 bg-white rounded-md shadow-lg" style="min-height: 450px;">
                 <div class="mb-4">
