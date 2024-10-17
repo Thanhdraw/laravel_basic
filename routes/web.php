@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+
 use App\Http\Controllers\CateController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
@@ -17,9 +19,15 @@ Route::get('/shop/{id}', [ProductController::class, 'show']);
 
 Route::get('/category', [CateController::class, 'index']);
 
-Route::get('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'submit'])->name(name: 'auth.submit');
-Route::get('/register', [AuthController::class, 'index'])->name(name: 'register.index');
+Route::get('/login', [LoginController::class, 'showLoginForm']);
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+
+
+
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
+
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 

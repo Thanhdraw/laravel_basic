@@ -15,7 +15,7 @@
                 Đăng ký tài khoản mới
             </h2>
         </div>
-        <form class="mt-8 space-y-6" action="{{route('auth.submit')}}" method="POST">
+        <form class="mt-8 space-y-6" action="{{ route('register.submit') }}" method="POST">
             @csrf
             <div class="p-8 bg-white rounded-md shadow-lg" style="min-height: 450px;">
                 <div class="mb-4">
