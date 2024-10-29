@@ -1,64 +1,66 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- resources/views/auth/register.blade.php -->
-@if(session('success'))
-    <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
-
-<div class="flex items-center justify-center min-h-screen px-4 py-12 bg-gray sm:px-6 lg:px-8">
-    <div class="w-full max-w-md space-y-8">
-        <div>
-            <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900">
-                Đăng ký tài khoản mới
-            </h2>
+    @if (session('success'))
+        <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+            {{ session('success') }}
         </div>
-        <form class="mt-8 space-y-6" action="{{ route('register.submit') }}" method="POST">
-            @csrf
-            <div class="p-8 bg-white rounded-md shadow-lg" style="min-height: 450px;">
-                <div class="mb-4">
-                    <label for="name" class="sr-only">Họ tên</label>
-                    <input id="name" name="name" type="text" required
-                        class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Họ tên">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="sr-only">Địa chỉ email</label>
-                    <input id="email" name="email" type="email" required
-                        class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Địa chỉ email">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="sr-only">Mật khẩu</label>
-                    <input id="password" name="password" type="password" required
-                        class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Mật khẩu">
-                </div>
-                <div class="mb-6">
-                    <label for="password_confirmation" class="sr-only">Xác nhận mật khẩu</label>
-                    <input id="password_confirmation" name="password_confirmation" type="password" required
-                        class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="Xác nhận mật khẩu">
-                </div>
+    @endif
 
-                <div>
-                    <button type="submit"
-                        class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Đăng ký
-                    </button>
-                </div>
-
-                <div class="mt-4 text-sm text-center">
-                    <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
-                        Đã có tài khoản? Đăng nhập
-                    </a>
-                </div>
+    <div class="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
+        <div class="w-full max-w-md space-y-8 bg-white shadow-md rounded-lg p-6">
+            <div>
+                <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900">
+                    Đăng ký tài khoản mới
+                </h2>
             </div>
-        </form>
+
+            @if (isset($user))
+                <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+                    <h3 class="font-medium">Thông tin người dùng:</h3>
+                    <p><strong>Name:</strong> {{ $user->name }}</p>
+                    <p><strong>Email:</strong> {{ $user->email }}</p>
+                </div>
+            @endif
+
+            <form action="{{ route('register.submit') }}" method="POST" class="space-y-6">
+                @csrf
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" name="name" value="{{ old('name') }}" required
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500" />
+                    @error('name')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" required
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500" />
+                    @error('email')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="password" name="password" required
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500" />
+                    @error('password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" required
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500" />
+                    @error('password_confirmation')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-500">
+                    Register
+                </button>
+            </form>
+        </div>
     </div>
-</div>
-
-
 @endsection

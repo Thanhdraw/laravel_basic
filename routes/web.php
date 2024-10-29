@@ -21,10 +21,21 @@ Route::get('/category', [CateController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm']);
 
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+
+
+// Route::get('/register', [RegisterController::class, 'register'])->name('register');
+
+// Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+
+// Route::post('/register', [RegisterController::class, 'register']); 
+
+// Route::get('/user-info', [RegisterController::class, 'showUserInfo'])->name('auth.user_info');
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
-
+Route::get('/users', [RegisterController::class, 'listUsers'])->name('users.list');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
