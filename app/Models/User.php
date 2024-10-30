@@ -44,4 +44,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function getAllusers()
+    {
+        return self::all();
+    }
+
+    public static function getUser($id)
+    {
+        return self::findOrFail($id);
+    }
+
+    public static function deleteUserById($id)
+    {
+        $user = self::findOrFail($id); // Tìm người dùng
+        $user->delete(); // Xóa người dùng
+    }
+
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -35,8 +36,30 @@ Route::get('/login', [LoginController::class, 'showLoginForm']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
-Route::get('/users', [RegisterController::class, 'listUsers'])->name('users.list');
 
+## action for users
+Route::get('/users', [RegisterController::class, 'listUsers'])->name('users.list');
+Route::get('/users/edit/{id}', [RegisterController::class, 'editUser'])->name('users.edit');
+Route::put('/users/update/{id}', [RegisterController::class, 'updateUser'])->name('users.update');
+Route::delete('/users/delete/{id}', [RegisterController::class, 'deleteUser'])->name('users.delete');
+
+
+#admin 
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+Route::get('admin/user', function () {
+    return view('admin.user');
+});
+
+Route::get('admin/user', [RegisterController::class, 'adminListUsers'])->name('admin.user');
+
+// Route::get('admin/user/edit/{id}', [RegisterController::class, 'editUser'])->name('users.edit');
+// Route::put('admin/user/update/{id}', [RegisterController::class, 'updateUser'])->name('users.update');
+// Route::delete('admin/user/delete/{id}', [RegisterController::class, 'deleteUser'])->name('users.delete');
+
+
+
+## action for contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 
