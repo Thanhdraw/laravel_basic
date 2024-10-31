@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\CateController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,7 @@ Route::get('admin/user', [RegisterController::class, 'adminListUsers'])->name('a
 // Route::get('admin/user/edit/{id}', [RegisterController::class, 'editUser'])->name('users.edit');
 // Route::put('admin/user/update/{id}', [RegisterController::class, 'updateUser'])->name('users.update');
 // Route::delete('admin/user/delete/{id}', [RegisterController::class, 'deleteUser'])->name('users.delete');
+Route::get('/create-post', [PostController::class, 'createPost']);
 
 
 
