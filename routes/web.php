@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryCotroller;
+use App\Http\Controllers\Admin\ProductCotroller;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -8,6 +11,7 @@ use App\Http\Controllers\CateController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Models\admin\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -67,3 +71,8 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
+
+
+Route::get('/admin/categories', action: [CategoryCotroller::class, 'index'])->name('admin.categories.index');
+Route::get('/admin/products', action: [ProductCotroller::class, 'index'])->name('admin.products.index');
+Route::get('/admin/users', action: [UserController::class, 'index'])->name('admin.user');
