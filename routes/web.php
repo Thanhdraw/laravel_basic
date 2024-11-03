@@ -80,25 +80,4 @@ Route::get('/admin/products', action: [ProductCotroller::class, 'index'])->name(
 Route::get('/admin/users', action: [UserController::class, 'index'])->name('admin.user');
 
 
-Route::prefix('admin')->group(function () {
-    // Tất cả routes trong này sẽ bắt đầu với /admin
-    
-    // Route đăng nhập
-    Route::get('/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AdminController::class, 'login'])->name('admin.login.post');
-
-    // Route đăng ký
-    Route::get('/register', [AdminController::class, 'showRegisterForm'])->name('admin.register');
-    Route::post('/register', [AdminController::class, 'register'])->name('admin.register.post');
-
-    // Routes được bảo vệ (yêu cầu đăng nhập)
-    Route::middleware(['auth', 'is.admin'])->group(function () {
-        // Dashboard
-        Route::get('/admin', [AdminController::class, 'index'])->name('admin.admin');
-        
-        // Đăng xuất
-        Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-    });
-});
-
 

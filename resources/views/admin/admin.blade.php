@@ -1,9 +1,8 @@
-
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
-    <p>Welcome back, {{ auth()->user()->name??"no name" }}!</p>
+<div class="container px-4 py-8 mx-auto">
+    <h1 class="mb-4 text-2xl font-bold">Dashboard</h1>
+    <p>Welcome back </p>
 </div>
 @endsection
