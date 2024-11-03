@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models\admin;
+use Illuminate\Foundation\Auth\User as Authenticatable; // Thay đổi ở đây
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class User extends Authenticatable // Thay đổi ở đây
 {
     use HasFactory;
 
@@ -18,6 +19,7 @@ class User extends Model
         'avatar',
         'role',
         'status',
+        'is_admin'
     ];
 
     protected $hidden = [
