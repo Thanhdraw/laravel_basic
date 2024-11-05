@@ -22,10 +22,9 @@ class ProductSeeder extends Seeder
         Product::create(['name' => 'Laptop', 'price' => 1500, 'category_id' => $electronics->id]);
         Product::create(['name' => 'Smartphone', 'price' => 800, 'category_id' => $electronics->id]);
 
-        Product::create(['name' => 'Fiction Book', 'price' => 20, 'category_id' => $books->id]);
-        Product::create(['name' => 'Science Book', 'price' => 35, 'category_id' => $books->id]);
+        Product::create(['name' => 'iPhone 15', 'price' => 10, 'category_id' => $electronics->id]);
+        Product::create(['name' => 'Apple Watch 7', 'price' => 10, 'category_id' => $electronics->id]);
 
-        Product::create(['name' => 'T-shirt', 'price' => 15, 'category_id' => $clothing->id]);
-        Product::create(['name' => 'Jeans', 'price' => 45, 'category_id' => $clothing->id]);
+
     }
 }

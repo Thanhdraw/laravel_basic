@@ -20,7 +20,16 @@
                     <tr>
                         <td class="px-4 py-2 border">{{ $user->name }}</td>
                         <td class="px-4 py-2 border">{{ $user->email }}</td>
-                        <td class="px-4 py-2 border">{{ $user->role }}</td>
+                        <td class="px-4 py-2 border {{ $user->roles->contains('name', 'admin') ? 'font-bold' : '' }}">
+                            @if ($user->roles->contains('name', 'admin'))
+                                Admin
+                            @elseif ($user->roles->contains('name', 'staff'))
+                                Staff
+                            @else
+                                User
+                            @endif
+                        </td>
+
                         <td class="px-4 py-2 border">
                             <a href="#" class="mr-2 text-blue-500 hover:text-blue-700">Edit</a>
                             <a href="#" class="text-red-500 hover:text-red-700">Delete</a>

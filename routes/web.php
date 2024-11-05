@@ -51,8 +51,6 @@ Route::put('/users/update/{id}', [RegisterController::class, 'updateUser'])->nam
 Route::delete('/users/delete/{id}', [RegisterController::class, 'deleteUser'])->name('users.delete');
 
 
-#admin 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
 Route::get('admin/user', function () {
     return view('admin.user');
@@ -81,3 +79,30 @@ Route::get('/admin/users', action: [UserController::class, 'index'])->name('admi
 
 
 
+
+Route::prefix('admin')->group(function () {
+
+
+
+    #admin 
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
+    Route::get('/register', [AdminController::class, 'showRegisterForm'])->name('admin.register');
+    Route::post('/register', [AdminController::class, 'register'])->name('admin.register.post');
+
+    Route::post('/login', [AdminController::class, 'login'])->name('admin.login.post');
+
+    Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+
+
+    #category - admin - CRUD
+    Route::get('/categories/create', [CategoryCotroller::class, 'create'])->name('categories.create');
+    Route::post('/categories/store', [CategoryCotroller::class, 'store'])->name('categories.store');
+    Route::get('/categories/{id}/edit', [CategoryCotroller::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{id}', [CategoryCotroller::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{id}', [CategoryCotroller::class, 'destroy'])->name('categories.destroy');
+
+});
+Route::get('/admin', [AdminController::class, 'index'])
+    ->middleware('role:admin');

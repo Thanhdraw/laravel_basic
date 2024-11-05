@@ -20,4 +20,21 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    public static function createCategory(array $data)
+    {
+        return self::create($data);
+    }
+    // Phương thức cập nhật category
+    public static function updateCategory($id, array $data)
+    {
+        $category = self::findOrFail($id);
+        return $category->update($data);
+    }
+
+    public static function deleteCategoryById($id)
+    {
+        $category = self::findOrFail($id);
+        $category->delete();
+    }
+
 }
