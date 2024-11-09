@@ -15,7 +15,8 @@ return new class extends Migration {
             $table->string('name');
             $table->string('description')->default('No description available');
             $table->decimal('price', 8, 2);
-            $table->string('image')->default('default.png');
+            $table->string('image')->nullable();
+
             $table->foreignId('category_id')    // Khóa ngoại để liên kết với bảng categories
                 ->constrained()
                 ->onDelete('cascade');

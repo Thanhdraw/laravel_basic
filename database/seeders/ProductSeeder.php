@@ -15,16 +15,18 @@ class ProductSeeder extends Seeder
     {
         //
         $electronics = Category::where('name', 'Electronics')->first();
-        $books = Category::where('name', 'Books')->first();
-        $clothing = Category::where('name', 'Clothing')->first();
+
 
         // Thêm sản phẩm cho từng category
-        Product::create(['name' => 'Laptop', 'price' => 1500, 'category_id' => $electronics->id]);
-        Product::create(['name' => 'Smartphone', 'price' => 800, 'category_id' => $electronics->id]);
 
-        Product::create(['name' => 'iPhone 15', 'price' => 10, 'category_id' => $electronics->id]);
-        Product::create(['name' => 'Apple Watch 7', 'price' => 10, 'category_id' => $electronics->id]);
-
+        Product::create([
+            'name' => 'iPhone 12 ProMax',
+            'price' => 99.88,
+            'category_id' => 1,
+            'image' => 'https://mobileworld.com.vn/uploads/product/06_2020/thumbs/iphone-12-128gb-quoc-te-likenew-99-trang.webp',
+            'updated_at' => now(),
+            'created_at' => now()
+        ]);
 
     }
 }
