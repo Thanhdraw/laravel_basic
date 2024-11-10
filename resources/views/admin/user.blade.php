@@ -18,26 +18,29 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        <td class="px-4 py-2 border">{{ $user->name }}</td>
+                        <td class="px-4 py-2 border">{{ $user->name ?? 'Guest' }}</td>
                         <td class="px-4 py-2 border">{{ $user->email }}</td>
                         <td class="px-4 py-2 border {{ $user->roles->contains('name', 'admin') ? 'font-bold' : '' }}">
-                            @if ($user->roles->contains('name', 'admin'))
-                                Admin
-                            @elseif ($user->roles->contains('name', 'staff'))
-                                Staff
-                            @else
-                                User
-                            @endif
+                            @foreach ($user->roles as $role)
+                                {{ ucfirst($role->name) }}
+                                @if (!$loop->last), @endif
+                            @endforeach
                         </td>
-
                         <td class="px-4 py-2 border">
                             <a href="#" class="mr-2 text-blue-500 hover:text-blue-700">Edit</a>
-                            <a href="#" class="text-red-500 hover:text-red-700">Delete</a>
+                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $users->links() }}
+        </div>
     </div>
 
     <div class="p-4 bg-white rounded-lg shadow">
@@ -61,8 +64,9 @@
                 <select id="role" name="role"
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     required>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit"

@@ -109,6 +109,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/products/store', [ProductCotroller::class, 'store'])->name('admin.products.store');
     Route::get('/products/{id}/edit', [ProductCotroller::class, 'edit'])->name('products.edit');
     Route::put('/products/{id}', action: [ProductCotroller::class, 'update'])->name('products.update');
+    Route::get('/products/{id}/delete', [ProductCotroller::class, 'delete'])->name('products.destroy');
+
 });
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('role:admin');

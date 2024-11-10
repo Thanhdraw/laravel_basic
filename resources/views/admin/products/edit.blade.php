@@ -88,32 +88,67 @@
 
                 <!-- Image Upload -->
                 <div class="col-span-2">
-                    <label for="image" class="block text-sm font-medium text-gray-700">Product Image</label>
-                    <div class="flex items-center mt-2 space-x-4">
+                    <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Product Image</label>
+                    <div class="mt-2 flex flex-col sm:flex-row gap-6">
+                        <!-- Preview Current Image -->
                         @if($product->image)
-                            <div class="relative w-24 h-24">
-                                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}"
-                                    class="object-cover w-24 h-24 rounded-lg">
+                            <div class="relative group">
+                                <img src="{{ $product->image }}" 
+                                     alt="{{ $product->name }}"
+                                     class="h-48 w-48 object-cover rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-200 group-hover:shadow-lg"
+                                >
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 rounded-lg transition-all duration-200 flex items-center justify-center">
+                                    <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-sm">Current Image</span>
+                                </div>
                             </div>
                         @endif
-                        <div
-                            class="flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                            <div class="space-y-1 text-center">
-                                <div class="flex text-sm text-gray-600">
-                                    <label for="image"
-                                        class="relative px-4 py-2 font-medium text-blue-600 bg-white rounded-md cursor-pointer hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                                        <span>Upload a file</span>
-                                        <input id="image" name="image" type="file" class="sr-only">
-                                    </label>
+                
+                        <!-- Image URL Input -->
+                        <div class="flex-1 max-w-md">
+                            <div class="p-4 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg bg-white dark:bg-gray-800 transition-all duration-200 hover:border-blue-500 dark:hover:border-blue-400">
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-center">
+                                        <svg class="h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    
+                                    <div class="space-y-2">
+                                        <label for="image_url" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                                            Image URL
+                                        </label>
+                                        <input type="text" 
+                                               id="image_url" 
+                                               name="image" 
+                                               value="{{ old('image', $product->image) }}"
+                                               placeholder="https://example.com/image.jpg"
+                                               class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 
+                                                      focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400
+                                                      bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                                        >
+                                    </div>
+                
+                                    <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span>Supported formats: PNG, JPG, GIF (Optional)</span>
+                                    </div>
                                 </div>
-                                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                             </div>
+                
+                            @error('image')
+                                <p class="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
                     </div>
-                    @error('image')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
                 </div>
+                
             </div>
 
             <div class="flex justify-end mt-6 space-x-3">

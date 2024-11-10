@@ -56,7 +56,7 @@ class ProductCotroller extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'image' => 'required|string|max:255',
+            'image' => 'string|max:255',
             'category_id' => 'required|exists:categories,id',
         ]);
 
@@ -68,7 +68,15 @@ class ProductCotroller extends Controller
             'image' => $request->image,
             'category_id' => $request->category_id,
         ]);
-        return redirect()->route('products.edit')
-            ->with('success', 'Sản phẩm đã được tạo hàng.');
+        return redirect()->route('products.edit', ['id' => $id])
+        ->with('success', 'Sản phẩm đã được cập nhật thành công.');
+    
+    }
+    public function delete($id){
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('admin.products.products')
+        ->with('success', 'Sản phẩm đã được xóa thành công.');
+
     }
 }
