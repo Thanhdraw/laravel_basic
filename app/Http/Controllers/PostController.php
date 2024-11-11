@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     //
+
+
+
+    
     public function createPost()
     {
         $user = User::find(3); // Giả sử người dùng có ID là 1

@@ -14,12 +14,12 @@
 
     @include('partials.header')
 
-    <main class="h-screen bg-slate-200">
+    {{-- <main class="h-screen bg-slate-200"> --}}
         @yield('content') <!-- Nội dung sẽ hiển thị tại đây -->
-    </main>
+    {{-- </main> --}}
 
 
-    @include('partials.footer')
 </body>
+    @include('partials.footer')
 
 </html>

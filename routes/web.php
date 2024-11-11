@@ -114,3 +114,4 @@ Route::prefix('admin')->group(function () {
 });
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('role:admin');
+    

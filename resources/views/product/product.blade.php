@@ -32,7 +32,7 @@
 
                         <div
                             class="w-full overflow-hidden bg-gray-200 rounded-md shadow-2xl aspect-h-1 aspect-w-1 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                            <img src="{{$product['img']}}" alt="Front of men&#039;s Basic Tee in black."
+                            <img src="{{$product['image']}}" alt="Front of men&#039;s Basic Tee in black."
                                 class="object-cover object-center w-full h-full lg:h-full lg:w-full">
                         </div>
                         <div class="flex justify-between mt-4">

@@ -14,12 +14,13 @@ class UserController extends Controller
     {
         // Lấy 10 người dùng mỗi trang và cùng lúc eager load các vai trò
         $users = User::with('roles')->paginate(10);
-    
+        $roles = Role::all();
+
         // Lấy tên vai trò 'admin'
-        $adminRole = Role::where('name', 'admin')->first()->name;
-    
-        // Trả về view với biến users và adminRole
-        return view('admin.user', compact('users', 'adminRole'));
+        $adminRole = Role::where('name', 'admin')->first();
+        $adminRoleName = $adminRole ? $adminRole->name : 'No Role Found';
+
+        // Trả về view với biến users, roles và adminRole
+        return view('admin.user', compact('users', 'roles', 'adminRole'));
     }
-    
 }

@@ -1,6 +1,7 @@
-<footer class="bg-white">
-    <div class="container flex items-center justify-between px-6 py-3 mx-auto">
-        <a href="#" class="text-xl font-bold text-gray-500 hover:text-gray-400">Your Online Store</a>
-        <p class="py-2 text-gray-500 sm:py-0">All rights reserved</p>
+
+<footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between">
+        <a href="#" class="text-2xl font-bold hover:text-gray-400 mb-4 sm:mb-0">Your Online Store</a>
+        <p class="text-gray-400 text-sm">© 2023 Your Online Store. All rights reserved.</p>
     </div>
 </footer>

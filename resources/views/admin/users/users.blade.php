@@ -39,7 +39,8 @@
                                         {{ $user->id }}
                                     </td>
                                     <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $user->name }}
+                                        {{ $user ? $user->name : 'No Name' }}
+
                                     </td>
 
                                     <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">

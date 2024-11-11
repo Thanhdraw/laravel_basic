@@ -16,6 +16,8 @@
                 <a href="{{ route('admin.register') }}"
                     class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Register</a>
                 <a href="{{ route('admin.logout') }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Logout</a>
+                <a href="/" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Trang bán hàng</a>
+
             </div>
         </div>
 

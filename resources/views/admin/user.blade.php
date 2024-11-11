@@ -28,7 +28,7 @@
                         </td>
                         <td class="px-4 py-2 border">
                             <a href="#" class="mr-2 text-blue-500 hover:text-blue-700">Edit</a>
-                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                            <form action="#" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
